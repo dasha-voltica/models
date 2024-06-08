@@ -166,7 +166,7 @@
 
         document.querySelector('#check-btn').addEventListener('click', () => {
           const username = document.querySelector('#username-input').value.trim()
-          fetch(`http://89.104.70.156:3000//check?username=${username}`)
+          fetch(`http://89.104.70.156:3000/check?username=${username}`)
             .then(data => data.json())
             .then(data => {
               if (data) {
