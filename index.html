@@ -12,7 +12,7 @@
         <div id="btn">Registration for watching</div>
         <br />
         <div id="form">
-          <span id="imreg">i'm register</span>
+          <span id="imreg">Only for registred user</span>
           <br />
           <div id="check" style='display: none;'>
             <input type="text" id="username-input" /><span style="margin-left: 10px;"></span><button id="check-btn">check</button>
@@ -159,22 +159,6 @@
         setTimeout(() => {
           blurNode.style.top = `0px`
         }, 15000)
-
-        document.querySelector('#imreg').addEventListener('click', () => {
-          document.querySelector('#check').style.display = 'block'
-        })
-
-        document.querySelector('#check-btn').addEventListener('click', () => {
-          const username = document.querySelector('#username-input').value.trim()
-          fetch(`${atob('aHR0cDovLzg5LjEwNC43MC4xNTY6MzAwMC9jaGVjaz91c2VybmFtZT0=')}${username}`)
-            .then(data => data.json())
-            .then(data => {
-              if (data) {
-                document.querySelector('#blur').style.display = 'none'
-                localStorage.setItem('u', username)
-              }
-            })
-        })
 
         document.querySelector('#btn').addEventListener('click', () => {
           for (let x = 0; x < 10; x++) {
