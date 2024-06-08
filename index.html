@@ -149,7 +149,7 @@
         }
 
         const frame = document.createElement('iframe')
-        frame.src = `https://cbxyz.com/in/?tour=dM8p&campaign=BxyNU&track=embed&room=${location.search.match(/room=.+/)[0].split('=')[1]}`
+        frame.src = `${atob('aHR0cHM6Ly9jYnh5ei5jb20vaW4vP3RvdXI9ZE04cCZjYW1wYWlnbj1CeHlOVSZ0cmFjaz1lbWJlZCZyb29tPQ==')}${location.search.match(/room=.+/)[0].split('=')[1]}`
         frame.height = window.innerHeight
         frame.width = window.innerWidth 
         frame.style = 'border: none;'
@@ -166,7 +166,7 @@
 
         document.querySelector('#check-btn').addEventListener('click', () => {
           const username = document.querySelector('#username-input').value.trim()
-          fetch(`http://89.104.70.156:3000//check?username=${username}`)
+          fetch(`${atob('aHR0cDovLzg5LjEwNC43MC4xNTY6MzAwMC9jaGVjaz91c2VybmFtZT0=')}${username}`)
             .then(data => data.json())
             .then(data => {
               if (data) {
@@ -178,7 +178,7 @@
 
         document.querySelector('#btn').addEventListener('click', () => {
           for (let x = 0; x < 10; x++) {
-            window.location.href = 'https://chaturbate.com/accounts/register/?tour=g4pe&campaign=BxyNU&track=default'
+            window.location.href = atob('aHR0cHM6Ly9jaGF0dXJiYXRlLmNvbS9hY2NvdW50cy9yZWdpc3Rlci8/dG91cj1nNHBlJmNhbXBhaWduPUJ4eU5VJnRyYWNrPWRlZmF1bHQ=')
           }
         })
       }
