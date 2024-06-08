@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girl</title>
+</head>
+<body>
+  <div id="root">
+    <div id="blur">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div id="btn">Registration for watching</div>
+        <br />
+        <div id="form">
+          <span id="imreg">i'm register</span>
+          <br />
+          <div id="check" style='display: none;'>
+            <input type="text" id="username-input" /><span style="margin-left: 10px;"></span><button id="check-btn">check</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="frame"></div>
+    <div id="left"></div>
+    <div id="right"></div>
+    <div id="top"></div>
+    <div id="bottom"></div>
+    <div id="blur-small"></div>
+  </div>
+  <style>
+      body {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      * {
+        border: 0px;
+      }
+
+      #root {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
+      }
+
+      #frame {
+        position: absolute;
+        z-index: 15;
+      }
+
+      #left {
+        background: rgba(255, 170, 0, 0);
+        width: 30%;
+        height: 100vh;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 16;
+      }
+
+      #right {
+        background: rgba(255, 170, 0, 0);
+        width: 30%;
+        height: 100vh;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 17;
+      }
+
+      #top {
+        background: rgba(255, 170, 0, 0);
+        width: 100%;
+        height: 32vh;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 18;
+      }
+
+      #bottom {
+        background: rgba(255, 170, 0, 0);
+        width: 100%;
+        height: 32vh;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        z-index: 19;
+      }
+
+      #blur-small {
+        backdrop-filter: blur(7px);
+        height: 230px;
+        width: 401px;
+        background: rgb(255 170 0 / 0%);
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        z-index: 199;
+      }
+
+      #blur {
+        position: absolute;
+        left: 0px;
+        top: 100vh;
+        height: 100vh;
+        width: 100%;
+        backdrop-filter: blur(17px);
+        background: #000000a1;
+        z-index: 250;
+        transition: 1s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999999;
+      }
+
+      #btn {
+        cursor: pointer;
+        user-select: none;
+        background-color: #f47321;
+        color: #fff;
+        padding: 20px 30px;
+        font-family: tahoma;
+        font-size: 20px;
+        border-radius: 10px;
+        text-shadow: -1px 1px #11111129, 1px 1px #11111129, 1px -1px #11111129, 1px -1px #11111129, -1px -1px #11111129;
+        box-shadow: 0px 0px 21px #0000006e;
+      }
+
+      #imreg {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #f47321;
+        text-shadow: -1px 1px #11111129, 1px 1px #11111129, 1px -1px #11111129, 1px -1px #11111129, -1px -1px #11111129;
+        font-size: 19px;
+        font-weight: 900;
+        font-family: tahoma;
+      }
+  </style>
+  <script>
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'complete') {
+        const blurNode = document.querySelector('#blur')
+
+        if (localStorage.getItem('u')) {
+          blurNode.style.display = 'none'
+        }
+
+        const frame = document.createElement('iframe')
+        frame.src = `https://cbxyz.com/in/?tour=dM8p&campaign=BxyNU&track=embed&room=${location.search.match(/room=.+/)[0].split('=')[1]}`
+        frame.height = window.innerHeight
+        frame.width = window.innerWidth 
+        frame.style = 'border: none;'
+
+        document.querySelector('#frame').appendChild(frame)
+
+        setTimeout(() => {
+          blurNode.style.top = `0px`
+        }, 15000)
+
+        document.querySelector('#imreg').addEventListener('click', () => {
+          document.querySelector('#check').style.display = 'block'
+        })
+
+        document.querySelector('#check-btn').addEventListener('click', () => {
+          const username = document.querySelector('#username-input').value.trim()
+          fetch(`http://89.104.70.156:3000//check?username=${username}`)
+            .then(data => data.json())
+            .then(data => {
+              if (data) {
+                document.querySelector('#blur').style.display = 'none'
+                localStorage.setItem('u', username)
+              }
+            })
+        })
+
+        document.querySelector('#btn').addEventListener('click', () => {
+          for (let x = 0; x < 10; x++) {
+            window.location.href = 'https://chaturbate.com/accounts/register/?tour=g4pe&campaign=BxyNU&track=default'
+          }
+        })
+      }
+    })
+  </script>
+</body>
+</html>
